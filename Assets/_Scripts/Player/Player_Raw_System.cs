@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Raw_System : MonoBehaviour
 {
+    // it dected the lane player in and communcate with teh Friend respwanManger 
     // Start is called before the first frame update
     [SerializeField] string rawName;
 
@@ -28,16 +29,19 @@ public class Player_Raw_System : MonoBehaviour
             case  ("Lane_UP"):
                 Debug.Log(" iam in raw  " + collision.gameObject.name);
                 rawName = "Lane_UP";
+                friends_RespwanManger.currentRespwanPoint.position = friends_RespwanManger.laneUp.position;
                 break;
                 
 
             case "Lane_Mid":
                 Debug.Log(" iam in raw  " + collision.gameObject.name);
                 rawName = "Lane_Mid";
+                friends_RespwanManger.currentRespwanPoint.position = friends_RespwanManger.laneMid.position;
                 break;
 
             case "Lane_Down":
                 Debug.Log(" iam in raw  " + collision.gameObject.name);
+                friends_RespwanManger.currentRespwanPoint.position = friends_RespwanManger.laneDown.position;
                 rawName = "Lane_Down";
                 break;
 
@@ -62,11 +66,13 @@ public class Player_Raw_System : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && rawName == "Lane_Mid")
         {
             Debug.Log(" iam calling Army in " + rawName);
+         
             friends_RespwanManger.Respwan();
         }
         if (Input.GetKeyDown(KeyCode.Space) && rawName == "Lane_Down")
         {
             Debug.Log(" iam calling Army in " + rawName);
+        
             friends_RespwanManger.Respwan();
         }
     }

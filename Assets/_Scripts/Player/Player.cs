@@ -33,7 +33,10 @@ public class Player : MonoBehaviour
         PlayerAttack();
     }
 
-
+    private void FixedUpdate()
+    {
+        
+    }
 
     void PlayerMovment()
     {
