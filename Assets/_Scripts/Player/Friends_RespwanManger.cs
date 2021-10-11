@@ -26,6 +26,7 @@ public class Friends_RespwanManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         ChooseFriendNumber();
     }
 
