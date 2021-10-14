@@ -3713,7 +3713,7 @@ MonoBehaviour:
   - {fileID: 1095126143025527733, guid: 6fc065ed026844846b58002a198a5d56, type: 3}
   waitTime: 3
   startTime: 2
-  repeatTime: 4
+  repeatTime: 3.5
 --- !u!1 &1439279686
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,8 @@ public class GameManger : MonoBehaviour
 
     void Start()
     {
+       
+       
         isPaused = false;
         source = GetComponent<AudioSource>();
         canCallForSupport = true;
@@ -74,7 +76,11 @@ public class GameManger : MonoBehaviour
 
     
     void Update()
+
+
     {
+    
+     
         GameOver();
         WinGame();
         ExitGame();
@@ -225,4 +231,5 @@ public class GameManger : MonoBehaviour
             isPaused =! isPaused;
         }
     }
+   
 }

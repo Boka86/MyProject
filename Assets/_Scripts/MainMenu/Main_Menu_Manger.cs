@@ -9,6 +9,10 @@ public class Main_Menu_Manger : MonoBehaviour
 
     public Animator fadeTran;
     [SerializeField] float waitTime;
+    private void Start()
+    {
+        MouseCur();
+    }
     void Update()
     {
         
@@ -23,10 +27,12 @@ public class Main_Menu_Manger : MonoBehaviour
 
 
 
-    public void ExitGame()
+   public void ExitGame()
     {
-        Application.Quit();
-        Debug.Log("Exit Game ");
+        
+        
+            Application.Quit();
+        
     }
 
     IEnumerator DelayLoadLevel(int levelIndex)
@@ -34,5 +40,14 @@ public class Main_Menu_Manger : MonoBehaviour
         fadeTran.SetTrigger("Fade");
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(levelIndex);
+    }
+
+    void MouseCur()
+    {
+        
+        
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        
     }
 }

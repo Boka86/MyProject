@@ -124,7 +124,11 @@ public class Player_Raw_System : MonoBehaviour
            
         }
 
-      
+        if (currentMana > maxMana)
+        {
+            // prevent to reach bigger than Max mana when collecting Mana Potion
+           currentMana = maxMana;
+        }
     }
    
 

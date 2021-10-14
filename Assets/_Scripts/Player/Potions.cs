@@ -49,7 +49,7 @@ public class Potions : MonoBehaviour
 
             if (player_Raw_System.currentMana > player_Raw_System.maxMana)
             {
-                // prevent to reach bigger than Max Health
+                // prevent to reach bigger than Max mana
                 player_Raw_System.currentMana = player_Raw_System.maxMana;
             }
         }
