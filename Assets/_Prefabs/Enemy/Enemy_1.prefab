@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 40
-  m_Sprite: {fileID: 21300000, guid: 53ca7d2c1d9390841b5cc27a8f4767dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eab58ec3efe61a749abdff121efe8ec5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -197,15 +197,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580644a82f3ae73469c6b7a55b2181e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackPower: 0.0002
+  actualHealth: 0
+  AttackPower: 0.004
   moveSpeed: 2
   distanceToPlayers: 1
   attackPoint_Radious: 0.6
+  destroyTimer: 3
+  destroyGameObjectTimer: 2.5
+  dead: 0
+  healthBar: {fileID: 6886070783545233563}
   attackPoint: {fileID: 6435859138219771228}
-  enemyLayers:
+  playerLayers:
     serializedVersion: 2
     m_Bits: 1024
-  healthBar: {fileID: 6886070783545233563}
 --- !u!1 &5974229993434018234
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6886070783545233563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.05, y: 1.09, z: 0}
+  m_LocalPosition: {x: -1.05, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 6558110145527131608}
@@ -308,7 +312,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 40
   m_Sprite: {fileID: 21300000, guid: 8c20e9b6f5ec0364d9db34bbb05c29c4, type: 3}
-  m_Color: {r: 0.85882354, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.8901961, g: 0.04946532, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

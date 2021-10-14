@@ -6,11 +6,13 @@ public class Player : MonoBehaviour,IDamagable
 {
     public float health { get; set; }
     [SerializeField] float speed;
-    [SerializeField] float attackPower;
+     public float attackPower;
     [SerializeField] float attackDelayTime;
     [SerializeField] float attackPoint_Radious;
     [SerializeField] LayerMask enemyLayers;
     [SerializeField] Transform attackPoint;
+    [SerializeField] public bool died;
+    
     float horizon;
     float vertical;
    
@@ -23,7 +25,7 @@ public class Player : MonoBehaviour,IDamagable
     [SerializeField] bool canAttackAgain;
     void Start()
     {
-        health = 1f;
+        health = 5f;
 
         
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour,IDamagable
     void Update()
     {
 
+        Debug.Log("player Health = " + health);
         PlayerMovment();
         PlayerAttack();
     }
@@ -57,7 +60,7 @@ public class Player : MonoBehaviour,IDamagable
 
     void PlayerAttack()
     {
-        if (Input.GetMouseButtonDown(0) && canAttackAgain)
+        if (Input.GetMouseButtonDown(0) && canAttackAgain&&died!=true)
         {
             anim.SetTrigger("IsAttacking");
             canAttackAgain = false;
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour,IDamagable
                 IDamagable hit = enemy.gameObject.GetComponent<IDamagable>();
                 if (hit != null)
                 {
-                    hit.Damage();
+                    hit.DamageByPlayer();
                 }
             }
             
@@ -95,8 +98,32 @@ public void Damage()
         enemy_AI = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy_AI>();
      
         health = health - enemy_AI.AttackPower;
-        Debug.Log(this.gameObject.name + " health IS " + health);
+        if (health <= 0)
+        {
+            died = true;
+            health = 0;
+            speed = 0f;
+            anim.SetTrigger("Die_Mode");
+            anim.SetBool("Fight_Mode", false);
+            anim.SetBool("Walking_Mode", false);
+            anim.SetBool("Idle_Mode", false);
+            gameObject.layer = 11;
+           // Destroy(gameObject, destroyTimer);
+           if(died!=false)
+            {
+                gameObject.GetComponent<Player>().enabled = false;
+                gameObject.GetComponent<Player_Raw_System>().enabled = false;
+                
+
+            }
+        }
     }
 
-   
+    // i dont need the below it just used for the Idamagable Contract
+    public void DamageByPlayer()
+    {
+
+    }
+
+    
 }

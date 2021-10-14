@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IDamagable
 {
     // Start is called before the first frame update
-    float health { get; set; }
+   float health { get; set; }
     void Damage();
+    void DamageByPlayer();
 }
