@@ -8,6 +8,7 @@ public class Friends_AI : MonoBehaviour, IDamagable
     [SerializeField] float currentHealth;
     [SerializeField] float moveSpeed;
     public float attackPower;
+    float x2attackPower;
     [SerializeField] int layerMask;
     [SerializeField] int layerMaskF;
     [SerializeField] float distanceToEnemy;
@@ -42,6 +43,7 @@ public class Friends_AI : MonoBehaviour, IDamagable
 
     void Start()
     {
+        x2attackPower = attackPower * 2;
         gameManger = GameObject.Find("Game_Manger_GO").GetComponent<GameManger>();
         player = GameObject.Find("Player").GetComponent<Player>();
         dead = false;
@@ -60,9 +62,9 @@ public class Friends_AI : MonoBehaviour, IDamagable
         localScale.x = health;
         healthBar.transform.localScale = localScale;
         DeadBool();
-
+        X2Attack();
         RunOnGameOver();
-
+      
 
         Avoid();
 
@@ -228,6 +230,20 @@ public class Friends_AI : MonoBehaviour, IDamagable
         }
     }
 
+    public void X2Attack()
+    {
+        if(gameManger.x2attackPower)
+        {
+            attackPower = x2attackPower;
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+        }
 
+       else if (gameManger.x2attackPower!=true)
+        {
+            attackPower = x2attackPower/2;
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+
+        }
+    }
 }
 

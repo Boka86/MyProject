@@ -248,7 +248,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Movment              W,S,D,A
 
-    Attack                   Left Mouse
+    Attack                   L Mouse Click
 
     Call
     Solider          Space
@@ -256,7 +256,8 @@ MonoBehaviour:
     Pause Game       BackSpace
 
     Exit Game         
-    ESC
+    ESC (In Game)
+
 
 '
   m_isRightToLeft: 0

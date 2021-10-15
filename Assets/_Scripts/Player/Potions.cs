@@ -47,11 +47,7 @@ public class Potions : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(gameObject, 5f);
 
-            if (player_Raw_System.currentMana > player_Raw_System.maxMana)
-            {
-                // prevent to reach bigger than Max mana
-                player_Raw_System.currentMana = player_Raw_System.maxMana;
-            }
+            
         }
     }
 

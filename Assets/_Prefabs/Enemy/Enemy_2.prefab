@@ -96,6 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualHealth: 0
   AttackPower: 0.004
+  minx2Start: 15
+  maxX2Start: 17
+  x2attackStatus: 0
   moveSpeed: 2
   distanceToPlayers: 1
   attackPoint_Radious: 0.6

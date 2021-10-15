@@ -13,6 +13,12 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     [SerializeField] float actualHealth;
     [SerializeField] 
     public float AttackPower;
+    float x2attackPower;
+    float x2attackRandomTimer;
+    [SerializeField] float minx2Start;
+    [SerializeField] float maxX2Start;
+    public  bool x2attackStatus;
+
 
     [SerializeField] float moveSpeed;
     [SerializeField] float distanceToPlayers;
@@ -42,6 +48,11 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     GameManger gameManger;
     void Start()
     {
+        x2attackRandomTimer = Random.Range(minx2Start, maxX2Start);
+        InvokeRepeating("powerUpStatus", x2attackRandomTimer, x2attackRandomTimer);
+       
+        
+        x2attackPower = AttackPower*2;
         gameManger = GameObject.Find("Game_Manger_GO").GetComponent<GameManger>();
         actualHealth = Random.Range(1f, 4f);
         localScale = healthBar.transform.localScale;
@@ -55,11 +66,13 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("enemy power up timer is" + x2attackRandomTimer);
         localScale.x = health;
         healthBar.transform.localScale = localScale;
         DeadBool();
         RunOnGameOver();
-
+        PowerUpEnemy();
 
     }
     private void FixedUpdate()
@@ -199,4 +212,33 @@ public class Enemy_AI : MonoBehaviour,IDamagable
             movement = new Vector2(-moveSpeed * Time.fixedDeltaTime, 0);
         }
     }
+
+    void PowerUpEnemy()
+    {
+        if (x2attackStatus)
+        {
+            AttackPower = x2attackPower;
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        }
+
+        else if (x2attackStatus != true)
+        {
+            AttackPower = x2attackPower / 2;
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        }
+    }
+
+    void powerUpStatus()
+    {
+        x2attackStatus = true;
+        StartCoroutine("PowerUpHandler");
+    }
+
+
+    IEnumerator PowerUpHandler()
+    {
+        yield return new WaitForSeconds(10f);
+        x2attackStatus = false;
+    }
+   
 }

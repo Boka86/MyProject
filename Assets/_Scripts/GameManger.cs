@@ -20,7 +20,9 @@ public class GameManger : MonoBehaviour
     [SerializeField] float minSupportTime;
     [SerializeField] float maxSupportTime;
     [SerializeField] float supportCoolDown;
+    [SerializeField] float supportCoolDownx2;
     [SerializeField] Image potionImage;
+    [SerializeField] Image x2Attack;
     int chooseRandomSupport;
     [SerializeField] TextMeshProUGUI enemyPassedText;
     [SerializeField] TextMeshProUGUI friendPassedText;
@@ -46,14 +48,23 @@ public class GameManger : MonoBehaviour
     bool enemycanWin;
     bool canCallForSupport;
     Player player;
-  
-   
+    public  bool x2attackPower;
+    
+
+
+    private void Awake()
+    {
+      
+    }
 
 
     void Start()
     {
        
-       
+   
+
+
+
         isPaused = false;
         source = GetComponent<AudioSource>();
         canCallForSupport = true;
@@ -79,13 +90,14 @@ public class GameManger : MonoBehaviour
 
 
     {
-    
-     
+      
+
         GameOver();
         WinGame();
         ExitGame();
         CountKills();
         SupportInTheWay_Potion();
+        SupportInTheWay_x2attack();
         PauseGame();
     }
     public void CountFriend()
@@ -200,6 +212,30 @@ public class GameManger : MonoBehaviour
         }
         
     }
+    void SupportInTheWay_x2attack()
+    {
+       
+        if (Input.GetKeyDown(KeyCode.J) && canCallForSupport && x2Attack.fillAmount == 1)
+        {
+            
+            source.PlayOneShot(hButtonSound, 3);
+            SupportInTheWay_Text.text = " Friendly attack x 2 ";
+            canCallForSupport = false;
+            x2Attack.fillAmount = 0;
+            x2attackPower = true;
+          
+           
+            StartCoroutine("SupportHandlerx2");
+        
+        }
+
+
+        if (x2Attack.fillAmount < 1)
+        {
+            x2Attack.fillAmount += supportCoolDownx2* Time.deltaTime;
+        }
+
+    }
 
     IEnumerator SupportHandler()
     {
@@ -212,6 +248,15 @@ public class GameManger : MonoBehaviour
         yield return new WaitForSeconds(2f);
         canCallForSupport = true;
         
+    }
+    IEnumerator SupportHandlerx2()
+    {
+        yield return new WaitForSeconds(10f);
+        canCallForSupport = true;
+        x2attackPower = false;
+
+
+
     }
     void PauseGame()
     {
