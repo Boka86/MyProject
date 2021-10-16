@@ -15,7 +15,9 @@ public class Player_Raw_System : MonoBehaviour
     [SerializeField] float waitTimerMana;
     [SerializeField] GameObject manaBar;
     [SerializeField] TextMeshProUGUI manaText;
-    
+    // [SerializeField] GameObject ArrowRaw;
+    GameObject game_Diffcluty;
+    Game_Diffcluty game_DiffclutyStatus;
     bool canCallSummonAgain;
     [SerializeField] Image mana_Image;
     AudioSource source;
@@ -23,7 +25,16 @@ public class Player_Raw_System : MonoBehaviour
     Vector3 localScale;
 
     Friends_RespwanManger friends_RespwanManger;
-  
+
+    private void Awake()
+    {
+        if (game_Diffcluty == null)
+        {
+            game_Diffcluty = GameObject.Find("game_Diffcluty");
+            game_DiffclutyStatus = game_Diffcluty.GetComponent<Game_Diffcluty>();
+        }
+    }
+
     void Start()
     {
         canCallSummonAgain = true;
@@ -38,37 +49,44 @@ public class Player_Raw_System : MonoBehaviour
     {
         CallArmy();
         ManaIncreaseRate();
+        GameDiffculty();
         localScale.x = currentMana;
         manaBar.transform.localScale = localScale;
         manaText.text = " Mana " + currentMana.ToString("F1");
      
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
 
         switch ( collision.gameObject.name)
         {
             case  ("Lane_UP"):
-                Debug.Log(" iam in raw  " + collision.gameObject.name);
+               //ArrowRaw.SetActive(true);
                 rawName = "Lane_UP";
+               // ArrowRaw.SetActive(true);
                 friends_RespwanManger.currentRespwanPoint.position = friends_RespwanManger.laneUp.position;
                 break;
                 
 
             case "Lane_Mid":
-                Debug.Log(" iam in raw  " + collision.gameObject.name);
+                
                 rawName = "Lane_Mid";
+               // ArrowRaw.SetActive(true);
                 friends_RespwanManger.currentRespwanPoint.position = friends_RespwanManger.laneMid.position;
                 break;
 
             case "Lane_Down":
-                Debug.Log(" iam in raw  " + collision.gameObject.name);
+               // ArrowRaw.SetActive(true);
                 friends_RespwanManger.currentRespwanPoint.position = friends_RespwanManger.laneDown.position;
                 rawName = "Lane_Down";
                 break;
 
-           
+            default:
+                rawName = "FakeLane";
+                //ArrowRaw.SetActive(false);
+                break;
+                
         }
         
 
@@ -152,5 +170,23 @@ public class Player_Raw_System : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         canCallSummonAgain = true;
+    }
+
+
+    void GameDiffculty()
+    {
+        if (game_DiffclutyStatus.easy)
+        {
+            manaIncreaseRate = 0.5f;
+           
+        }
+        if (game_DiffclutyStatus.normal)
+        {
+            manaIncreaseRate = 0.4f;
+        }
+        if (game_DiffclutyStatus.hard)
+        {
+            manaIncreaseRate = 0.2f;
+        }
     }
 }

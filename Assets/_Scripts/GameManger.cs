@@ -46,7 +46,7 @@ public class GameManger : MonoBehaviour
     [SerializeField] AudioClip hButtonSound;
     public bool gameOver;
     bool enemycanWin;
-    bool canCallForSupport;
+   
     Player player;
     public  bool x2attackPower;
     
@@ -67,7 +67,7 @@ public class GameManger : MonoBehaviour
 
         isPaused = false;
         source = GetComponent<AudioSource>();
-        canCallForSupport = true;
+        
         SupportInTheWay = " City Suppport in the Way";
         SupportInTheWay_Text.text = "";
         supportRateTime = Random.Range(minSupportTime, maxSupportTime);
@@ -191,7 +191,7 @@ public class GameManger : MonoBehaviour
 
     void SupportInTheWay_Potion()
     {
-     if(Input.GetKeyDown(KeyCode.H) && canCallForSupport&&potionImage.fillAmount==1)
+     if(Input.GetKeyDown(KeyCode.H) && potionImage.fillAmount==1)
         {
             source.PlayOneShot(hButtonSound, 3);
             Debug.Log(" SUPPORT IS WORKING ");
@@ -199,7 +199,7 @@ public class GameManger : MonoBehaviour
             supportPosRandomizer = Random.Range(0, respawnPointsForSupport.Length);
             supportRateTime = Random.Range(minSupportTime, maxSupportTime);
             SupportInTheWay_Text.text = SupportInTheWay;
-            canCallForSupport = false;
+           
             potionImage.fillAmount = 0;
             StartCoroutine("SupportHandler");
             StartCoroutine("ReactiveCallForSupport");
@@ -215,12 +215,12 @@ public class GameManger : MonoBehaviour
     void SupportInTheWay_x2attack()
     {
        
-        if (Input.GetKeyDown(KeyCode.J) && canCallForSupport && x2Attack.fillAmount == 1)
+        if (Input.GetKeyDown(KeyCode.J) &&  x2Attack.fillAmount == 1)
         {
             
             source.PlayOneShot(hButtonSound, 3);
             SupportInTheWay_Text.text = " Friendly attack x 2 ";
-            canCallForSupport = false;
+            
             x2Attack.fillAmount = 0;
             x2attackPower = true;
           
@@ -246,14 +246,15 @@ public class GameManger : MonoBehaviour
     IEnumerator ReactiveCallForSupport()
     {
         yield return new WaitForSeconds(2f);
-        canCallForSupport = true;
+    
         
     }
     IEnumerator SupportHandlerx2()
     {
         yield return new WaitForSeconds(10f);
-        canCallForSupport = true;
+        
         x2attackPower = false;
+        SupportInTheWay_Text.text = "  ";
 
 
 

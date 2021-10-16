@@ -35,7 +35,9 @@ public class Enemy_AI : MonoBehaviour,IDamagable
 
     Player player;
     bool inWalkMode;
-   
+    bool canPowerUpAgain;
+
+
 
 
 
@@ -49,9 +51,9 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     void Start()
     {
         x2attackRandomTimer = Random.Range(minx2Start, maxX2Start);
-        InvokeRepeating("powerUpStatus", x2attackRandomTimer, x2attackRandomTimer);
-       
-        
+        canPowerUpAgain = true;
+
+
         x2attackPower = AttackPower*2;
         gameManger = GameObject.Find("Game_Manger_GO").GetComponent<GameManger>();
         actualHealth = Random.Range(1f, 4f);
@@ -66,14 +68,14 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     // Update is called once per frame
     void Update()
     {
-
+        
         Debug.Log("enemy power up timer is" + x2attackRandomTimer);
         localScale.x = health;
         healthBar.transform.localScale = localScale;
         DeadBool();
         RunOnGameOver();
         PowerUpEnemy();
-
+        powerUpStatus();
     }
     private void FixedUpdate()
     {
@@ -230,15 +232,23 @@ public class Enemy_AI : MonoBehaviour,IDamagable
 
     void powerUpStatus()
     {
-        x2attackStatus = true;
-        StartCoroutine("PowerUpHandler");
+        if(gameManger.friendPassedCount>6&&canPowerUpAgain)
+        {
+            x2attackStatus = true;
+            canPowerUpAgain=false;
+            StartCoroutine("PowerUpHandler");
+        }
+       
+        
     }
 
 
     IEnumerator PowerUpHandler()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(20f);
         x2attackStatus = false;
+        canPowerUpAgain = false;
+
     }
    
 }
