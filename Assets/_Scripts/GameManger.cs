@@ -21,8 +21,14 @@ public class GameManger : MonoBehaviour
     [SerializeField] float maxSupportTime;
     [SerializeField] float supportCoolDown;
     [SerializeField] float supportCoolDownx2;
+    [SerializeField] float supportCoolDownxshower;
     [SerializeField] Image potionImage;
     [SerializeField] Image x2Attack;
+    [SerializeField] Image showerImage;
+    [SerializeField] GameObject showerEfeect;
+    
+    [SerializeField] AudioClip explosion;
+    GameObject[] enemyAtShower;
     int chooseRandomSupport;
     [SerializeField] TextMeshProUGUI enemyPassedText;
     [SerializeField] TextMeshProUGUI friendPassedText;
@@ -44,6 +50,9 @@ public class GameManger : MonoBehaviour
     [SerializeField] GameObject barrier2;
     AudioSource source;
     [SerializeField] AudioClip hButtonSound;
+    [SerializeField] AudioClip givethemHell;
+    [SerializeField] AudioClip medicClip;
+    [SerializeField] AudioClip moveUP_CLIP;
     public bool gameOver;
     bool enemycanWin;
    
@@ -60,10 +69,10 @@ public class GameManger : MonoBehaviour
 
     void Start()
     {
-       
-   
 
 
+
+      
 
         isPaused = false;
         source = GetComponent<AudioSource>();
@@ -98,6 +107,7 @@ public class GameManger : MonoBehaviour
         CountKills();
         SupportInTheWay_Potion();
         SupportInTheWay_x2attack();
+        SupportInTheWay_Shower();
         PauseGame();
     }
     public void CountFriend()
@@ -139,6 +149,7 @@ public class GameManger : MonoBehaviour
             Destroy(barrier2);
             gameOver = true;
             player.GetComponent<Collider2D>().enabled = false;
+            player.GetComponentInChildren<Animator>().SetTrigger("Die_Mode");
             enemyKilled_Text.enabled = true;
             friendlyKilled_Text.enabled = true;
             StartNextLevel();
@@ -157,6 +168,7 @@ public class GameManger : MonoBehaviour
             friendlyKilled_Text.enabled = true;
             enemyKilled_Text.enabled = true;
             StartNextLevel();
+            player.GetComponentInChildren<Animator>().SetTrigger("Die_Mode");
         }
     }
     public void ExitGame()
@@ -194,7 +206,8 @@ public class GameManger : MonoBehaviour
      if(Input.GetKeyDown(KeyCode.H) && potionImage.fillAmount==1)
         {
             source.PlayOneShot(hButtonSound, 3);
-            Debug.Log(" SUPPORT IS WORKING ");
+           source.PlayOneShot(medicClip,10f);
+
             chooseRandomSupport = Random.Range(0, support.Length);
             supportPosRandomizer = Random.Range(0, respawnPointsForSupport.Length);
             supportRateTime = Random.Range(minSupportTime, maxSupportTime);
@@ -219,6 +232,7 @@ public class GameManger : MonoBehaviour
         {
             
             source.PlayOneShot(hButtonSound, 3);
+            source.PlayOneShot(moveUP_CLIP,10f);
             SupportInTheWay_Text.text = " Friendly attack x 2 ";
             
             x2Attack.fillAmount = 0;
@@ -233,6 +247,26 @@ public class GameManger : MonoBehaviour
         if (x2Attack.fillAmount < 1)
         {
             x2Attack.fillAmount += supportCoolDownx2* Time.deltaTime;
+        }
+
+    }
+    void SupportInTheWay_Shower()
+    {
+        enemyAtShower = GameObject.FindGameObjectsWithTag("Enemy");
+        if (Input.GetKeyDown(KeyCode.K) && showerImage.fillAmount == 1)
+        {
+            source.PlayOneShot(hButtonSound, 3);
+            showerImage.fillAmount = 0;
+            source.PlayOneShot(givethemHell,10f);
+            SupportInTheWay_Text.text = " Artillery Support Fired ";
+            StartCoroutine("DelayArtillery");
+            
+        }
+
+
+        if (showerImage.fillAmount < 1)
+        {
+            showerImage.fillAmount += supportCoolDownxshower * Time.deltaTime;
         }
 
     }
@@ -259,6 +293,36 @@ public class GameManger : MonoBehaviour
 
 
     }
+    IEnumerator DelayArtillery()
+    {
+        yield return new WaitForSeconds(3f);
+
+        Instantiate(showerEfeect, transform.position, Quaternion.identity);
+        source.PlayOneShot(explosion, 6);
+        SupportInTheWay_Text.text = " ";
+        StartCoroutine("DelayArtilleryEnemyDeath");
+       
+    }
+    IEnumerator DelayArtilleryEnemyDeath()
+    {
+
+       
+        yield return new WaitForSeconds(2f);
+
+        foreach (GameObject g in enemyAtShower)
+        {
+            // g.GetComponentInChildren<Animator>().SetBool("Die_Mode", true);
+            // g.GetComponent<Enemy_AI>().health = 0;
+            // g.GetComponent<Enemy_AI>().moveSpeed = 0;
+            // enemyKilledCount += 1;
+            g.GetComponent<Enemy_AI>().DeadByFire();
+           
+
+
+        }
+
+    }
+
     void PauseGame()
     {
         if(isPaused)

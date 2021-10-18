@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Main_Menu_Manger : MonoBehaviour
 {
     // Start is called before the first frame update
-
+   
     public Animator fadeTran;
     [SerializeField] float waitTime;
+  
+    
     private void Start()
     {
         MouseCur();
+       
     }
     void Update()
     {

@@ -8,31 +8,23 @@ public class Enemy_RespwanManger : MonoBehaviour
 
     [SerializeField] Transform  [] respawnPoints;
     [SerializeField] GameObject [] enemyGo;
-    [SerializeField] float waitTime;
-    [SerializeField] float startTime;
-    [SerializeField] float repeatTime;
-    GameObject game_Diffcluty;
-    Game_Diffcluty game_DiffclutyStatus;
-
+   
     int enemyGoRandomizer;
     int enemyPosRandomizer;
     private void Awake()
     {
-        if(game_Diffcluty==null)
-        {
-            game_Diffcluty = GameObject.Find("game_Diffcluty");
-            game_DiffclutyStatus = game_Diffcluty.GetComponent<Game_Diffcluty>();
-        }
+        
     }
     void Start()
     {
-        InvokeRepeating("RespwanEnemy", startTime, repeatTime);
+       
+        InvokeRepeating("RespwanEnemy", Game_Diffcluty.startTime, Game_Diffcluty.repeatTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameDiffculty();
+    
     }
 
 
@@ -45,24 +37,7 @@ public class Enemy_RespwanManger : MonoBehaviour
 
     }
 
-    void GameDiffculty()
-    {
-        if(game_DiffclutyStatus.easy)
-        {
-            startTime = 3f;
-            repeatTime = 5f;
-        }
-        if (game_DiffclutyStatus.normal)
-        {
-            startTime = 2f;
-            repeatTime = 3f;
-        }
-        if (game_DiffclutyStatus.hard)
-        {
-            startTime = 2f;
-            repeatTime = 0.5f;
-        }
-    }
+   
 
 
 

@@ -20,7 +20,7 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     public  bool x2attackStatus;
 
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] float distanceToPlayers;
     [SerializeField] float attackPoint_Radious;
     [SerializeField] float destroyTimer;
@@ -52,7 +52,7 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     {
         x2attackRandomTimer = Random.Range(minx2Start, maxX2Start);
         canPowerUpAgain = true;
-
+        AttackPower = Random.Range(0.004f, 0.006f);
 
         x2attackPower = AttackPower*2;
         gameManger = GameObject.Find("Game_Manger_GO").GetComponent<GameManger>();
@@ -69,7 +69,7 @@ public class Enemy_AI : MonoBehaviour,IDamagable
     void Update()
     {
         
-        Debug.Log("enemy power up timer is" + x2attackRandomTimer);
+       
         localScale.x = health;
         healthBar.transform.localScale = localScale;
         DeadBool();
@@ -129,6 +129,7 @@ public class Enemy_AI : MonoBehaviour,IDamagable
 
     public void Damage()
     {
+
         Friends_AI = GameObject.FindGameObjectWithTag("Freinds").GetComponent<Friends_AI>();
       
         health = health - Friends_AI.attackPower;
@@ -195,7 +196,19 @@ public class Enemy_AI : MonoBehaviour,IDamagable
        
 
     }
-
+    public void DeadByFire()
+    {
+        health = 0;
+        moveSpeed = 0f;
+        anim.SetTrigger("Die_Mode");
+        anim.SetBool("Fight_Mode", false);
+        anim.SetBool("Walking_Mode", false);
+        anim.SetBool("Idle_Mode", false);
+        gameObject.layer = 11;
+       // gameObject.SetActive(false);
+        gameManger.enemyKilledCount += 1;
+        StartCoroutine("hideGo");
+    }
     void DeadBool()
     {
         if(health<=0)
@@ -250,5 +263,11 @@ public class Enemy_AI : MonoBehaviour,IDamagable
         canPowerUpAgain = false;
 
     }
-   
+    IEnumerator hideGo()
+    {
+        yield return new WaitForSeconds(5F);
+        gameObject.SetActive(false);
+
+    }
+
 }

@@ -17,6 +17,7 @@ public class Portflio : MonoBehaviour
     AudioSource source;
     [SerializeField]   AudioClip tvOn;
    [SerializeField] Animator anim;
+    [SerializeField] string youTube_URL;
     void Start()
 
     {
@@ -97,6 +98,14 @@ public class Portflio : MonoBehaviour
 
 
         }
+        if (tvIsOn == true && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            canChangeTV = true;
+            OpenYouTube();
+            source.PlayOneShot(tvOn, 5);
+
+
+        }
     }
     //  Project Load Bulid
     void LittelWarProject()
@@ -126,5 +135,10 @@ public class Portflio : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Level_00");
 
+    }
+
+    void OpenYouTube()
+    {
+        Application.OpenURL(youTube_URL);
     }
 }

@@ -38,7 +38,7 @@ public class Player : MonoBehaviour,IDamagable
     void Update()
     {
 
-        Debug.Log("player Health = " + health);
+       
         PlayerMovment();
         PlayerAttack();
     }

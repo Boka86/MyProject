@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: tvSprite_Project
       value: 
       objectReference: {fileID: 250380752}
+    - target: {fileID: 3076160813731510488, guid: 22d25a10c3c9dfa47bf31cc2bbf44ea9, type: 3}
+      propertyPath: youTube_URL
+      value: https://www.youtube.com/channel/UCQ2V7Y7oe8MpERae7SoA17Q/videos
+      objectReference: {fileID: 0}
     - target: {fileID: 3076160814014591295, guid: 22d25a10c3c9dfa47bf31cc2bbf44ea9, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -375,15 +379,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6771211015711267520, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.85188
+      value: 12.3
       objectReference: {fileID: 0}
     - target: {fileID: 6771211015711267520, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 243.53703
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6771211015711267520, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000030517578
+      value: 1.81
       objectReference: {fileID: 0}
     - target: {fileID: 6771211015711267520, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
       propertyPath: m_LocalRotation.x
@@ -420,7 +424,11 @@ PrefabInstance:
     - target: {fileID: 6771211015711267521, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 5a90c68c8b534cb4180ead5cf21e2be3, type: 3}
+      objectReference: {fileID: 8300000, guid: c23450fb6fa4d1d4a9f130c080d5facf, type: 3}
+    - target: {fileID: 6771211015711267521, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6771211015711267522, guid: b63adfdda7217b04f8f6da0ae7b0f537, type: 3}
       propertyPath: m_Name
       value: Music_BackGround

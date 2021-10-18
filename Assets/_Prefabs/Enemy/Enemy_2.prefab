@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualHealth: 0
-  AttackPower: 0.004
+  AttackPower: 0.005
   minx2Start: 15
   maxX2Start: 17
   x2attackStatus: 0

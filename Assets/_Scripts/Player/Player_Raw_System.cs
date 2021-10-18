@@ -15,6 +15,7 @@ public class Player_Raw_System : MonoBehaviour
     [SerializeField] float waitTimerMana;
     [SerializeField] GameObject manaBar;
     [SerializeField] TextMeshProUGUI manaText;
+    int floatTextNumber;
     // [SerializeField] GameObject ArrowRaw;
     GameObject game_Diffcluty;
     Game_Diffcluty game_DiffclutyStatus;
@@ -22,21 +23,23 @@ public class Player_Raw_System : MonoBehaviour
     [SerializeField] Image mana_Image;
     AudioSource source;
     [SerializeField] AudioClip ManaSound;
+   // [SerializeField] AudioClip GOGO_CLIP;
+    //[SerializeField] AudioClip fORWORD_CLIP;
+    //[SerializeField] AudioClip ATTACK_CLIP;
+    [SerializeField] AudioClip[] BATTELCry;
+    [SerializeField] int battelCryRandomizer;
     Vector3 localScale;
 
     Friends_RespwanManger friends_RespwanManger;
 
     private void Awake()
     {
-        if (game_Diffcluty == null)
-        {
-            game_Diffcluty = GameObject.Find("game_Diffcluty");
-            game_DiffclutyStatus = game_Diffcluty.GetComponent<Game_Diffcluty>();
-        }
+       
     }
 
     void Start()
     {
+          
         canCallSummonAgain = true;
         source = GetComponent<AudioSource>();
         friends_RespwanManger = GameObject.Find("Friends_RespwanManger").GetComponent<Friends_RespwanManger>();
@@ -49,7 +52,7 @@ public class Player_Raw_System : MonoBehaviour
     {
         CallArmy();
         ManaIncreaseRate();
-        GameDiffculty();
+       
         localScale.x = currentMana;
         manaBar.transform.localScale = localScale;
         manaText.text = " Mana " + currentMana.ToString("F1");
@@ -82,10 +85,7 @@ public class Player_Raw_System : MonoBehaviour
                 rawName = "Lane_Down";
                 break;
 
-            default:
-                rawName = "FakeLane";
-                //ArrowRaw.SetActive(false);
-                break;
+          
                 
         }
         
@@ -95,35 +95,45 @@ public class Player_Raw_System : MonoBehaviour
 
     void CallArmy()
     {
+       
         if (Input.GetKeyDown(KeyCode.Space) && rawName == "Lane_UP" && currentMana >= friends_RespwanManger.manaCost && canCallSummonAgain)
         {
+           
+            source.PlayOneShot(BATTELCry[battelCryRandomizer],5f);
             canCallSummonAgain = false;
             friends_RespwanManger.Respwan();
             currentMana = currentMana - friends_RespwanManger.manaCost;
-
+            
             mana_Image.GetComponent<Image>().color = Color.red;
             StartCoroutine("RevertColor");
             StartCoroutine("DelaySummon");
+            battelCryRandomizer = Random.Range(0, BATTELCry.Length);
         }
         if (Input.GetKeyDown(KeyCode.Space) && rawName == "Lane_Mid" && currentMana >= friends_RespwanManger.manaCost && canCallSummonAgain)
         {
+           
+            source.PlayOneShot(BATTELCry[battelCryRandomizer], 5f);
             canCallSummonAgain = false;
-         
+           
             friends_RespwanManger.Respwan();
             currentMana = currentMana - friends_RespwanManger.manaCost;
             mana_Image.GetComponent<Image>().color = Color.red;
             StartCoroutine("RevertColor");
             StartCoroutine("DelaySummon");
-
+            battelCryRandomizer = Random.Range(0, BATTELCry.Length);
         }
         if (Input.GetKeyDown(KeyCode.Space) && rawName == "Lane_Down" && currentMana >= friends_RespwanManger.manaCost && canCallSummonAgain)
         {
+
+          
+            source.PlayOneShot(BATTELCry[battelCryRandomizer], 5f);
             canCallSummonAgain = false;
             friends_RespwanManger.Respwan();
             currentMana = currentMana - friends_RespwanManger.manaCost;
             mana_Image.GetComponent<Image>().color = Color.red;
             StartCoroutine("RevertColor");
             StartCoroutine("DelaySummon");
+            battelCryRandomizer = Random.Range(0, BATTELCry.Length);
 
         }
         if(Input.GetKeyDown(KeyCode.Space))
@@ -173,20 +183,5 @@ public class Player_Raw_System : MonoBehaviour
     }
 
 
-    void GameDiffculty()
-    {
-        if (game_DiffclutyStatus.easy)
-        {
-            manaIncreaseRate = 0.5f;
-           
-        }
-        if (game_DiffclutyStatus.normal)
-        {
-            manaIncreaseRate = 0.4f;
-        }
-        if (game_DiffclutyStatus.hard)
-        {
-            manaIncreaseRate = 0.2f;
-        }
-    }
+   
 }
