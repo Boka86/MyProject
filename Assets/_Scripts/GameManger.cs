@@ -53,6 +53,7 @@ public class GameManger : MonoBehaviour
     [SerializeField] AudioClip givethemHell;
     [SerializeField] AudioClip medicClip;
     [SerializeField] AudioClip moveUP_CLIP;
+    [SerializeField] AudioClip nice_Work;
     public bool gameOver;
     bool enemycanWin;
    
@@ -257,7 +258,7 @@ public class GameManger : MonoBehaviour
         {
             source.PlayOneShot(hButtonSound, 3);
             showerImage.fillAmount = 0;
-            source.PlayOneShot(givethemHell,10f);
+            source.PlayOneShot(givethemHell,5f);
             SupportInTheWay_Text.text = " Artillery Support Fired ";
             StartCoroutine("DelayArtillery");
             
@@ -298,7 +299,7 @@ public class GameManger : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         Instantiate(showerEfeect, transform.position, Quaternion.identity);
-        source.PlayOneShot(explosion, 6);
+        source.PlayOneShot(explosion, 5);
         SupportInTheWay_Text.text = " ";
         StartCoroutine("DelayArtilleryEnemyDeath");
        
@@ -316,6 +317,7 @@ public class GameManger : MonoBehaviour
             // g.GetComponent<Enemy_AI>().moveSpeed = 0;
             // enemyKilledCount += 1;
             g.GetComponent<Enemy_AI>().DeadByFire();
+            source.PlayOneShot(nice_Work,1);
            
 
 

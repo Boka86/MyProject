@@ -1059,7 +1059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &448996296
@@ -1161,7 +1161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &565367522
@@ -1916,7 +1916,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 11370d22fcc25a3458df44930fa0a206, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 89eefb8d3564d3943b9e615ae235017a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4261,7 +4261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1948010542
@@ -4467,9 +4467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTran: {fileID: 4287811404409497656}
   waitTime: 5
-  easy: 
-  normal: 
-  hard: 
 --- !u!1001 &1670132233108330541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4593,6 +4590,14 @@ PrefabInstance:
     - target: {fileID: 2663843012337111080, guid: 175ab134c449c684b93e3f47c0882d5b, type: 3}
       propertyPath: repeatTime
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663843012337111080, guid: 175ab134c449c684b93e3f47c0882d5b, type: 3}
+      propertyPath: normal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663843012337111080, guid: 175ab134c449c684b93e3f47c0882d5b, type: 3}
+      propertyPath: hard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2663843012337111081, guid: 175ab134c449c684b93e3f47c0882d5b, type: 3}
       propertyPath: m_Name

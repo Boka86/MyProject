@@ -39,13 +39,13 @@ public class Game_Diffcluty : MonoBehaviour
         diccult.currentGameDfcculity.text = diccult.easy;
         
         startTime  =4f;
-        repeatTime = 5f;
+        repeatTime = 3f;
      
     }
     public void Normal()
     {
         startTime = 2f;
-        repeatTime = 3f;
+        repeatTime = 2.4f;
         easy = false;
         normal = true;
         hard = false;

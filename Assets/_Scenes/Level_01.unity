@@ -848,8 +848,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294506744
-  m_fontColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
+    rgba: 4280141512
+  m_fontColor: {r: 0.7830189, g: 0.7752228, b: 0.114498034, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -1421,8 +1421,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294506744
-  m_fontColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
+    rgba: 4282686870
+  m_fontColor: {r: 0.5882353, g: 0.6156863, b: 0.26666668, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -1550,15 +1550,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279819741
+  m_fontColor: {r: 0.8679245, g: 0.86515814, b: 0.09416164, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -1570,12 +1570,12 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 2426
+  m_TextStyleHashCode: 97690656
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.8
+  m_fontSize: 35.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4665,7 +4665,7 @@ SpriteRenderer:
   m_Size: {x: 2.59, y: 1.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1637293584
@@ -4830,7 +4830,7 @@ SpriteRenderer:
   m_Size: {x: 2.59, y: 1.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1812568864
@@ -4899,8 +4899,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294506744
-  m_fontColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
+    rgba: 4282686870
+  m_fontColor: {r: 0.5882353, g: 0.6156863, b: 0.26666668, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -5395,8 +5395,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294506744
-  m_fontColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
+    rgba: 4280141512
+  m_fontColor: {r: 0.7830189, g: 0.7752228, b: 0.114498034, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -5474,6 +5474,7 @@ GameObject:
   - component: {fileID: 2014831018}
   - component: {fileID: 2014831020}
   - component: {fileID: 2014831019}
+  - component: {fileID: 2014831021}
   m_Layer: 5
   m_Name: Mana_Bar
   m_TagString: Untagged
@@ -5513,14 +5514,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19575472, g: 0.33640844, b: 0.7830189, a: 1}
+  m_Color: {r: 0.14711641, g: 0.47846156, b: 0.5471698, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a2948c0aa6fd2f4cb68ab6b644b20dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e29de3b35312aa468c49474b93320e7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5538,6 +5539,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014831017}
   m_CullTransparentMesh: 0
+--- !u!95 &2014831021
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014831017}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 891a2ae6b96d764408f0f3c650725c9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2037872183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5751,7 +5771,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2055167329
@@ -5881,7 +5901,7 @@ PrefabInstance:
     - target: {fileID: 5404528487389230771, guid: 23ebd869b96bee74586c4985a03cea3f, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0cb9779ea04ba484bae552e22fcb66af, type: 3}
+      objectReference: {fileID: 8300000, guid: 59578c873242bc6499806f5f2333a0fc, type: 3}
     - target: {fileID: 7576013174164024028, guid: 23ebd869b96bee74586c4985a03cea3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.3944
@@ -6486,6 +6506,10 @@ PrefabInstance:
       propertyPath: moveUP_CLIP
       value: 
       objectReference: {fileID: 8300000, guid: 5b03c5e150ea2e74bb26798262a83e4e, type: 3}
+    - target: {fileID: 5564731487248555131, guid: dd104bea10a91eb41955a178b18e2773, type: 3}
+      propertyPath: nice_Work
+      value: 
+      objectReference: {fileID: 8300000, guid: c02dafd330b4b4f4396e269e99964572, type: 3}
     - target: {fileID: 8355994703692632699, guid: dd104bea10a91eb41955a178b18e2773, type: 3}
       propertyPath: m_Enabled
       value: 0
